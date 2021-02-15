@@ -24,6 +24,26 @@ public class SinglyLinkedList {
      */
     private LinkNode end;
 
+    /**
+     * Default Constructor
+     */
+    public SinglyLinkedList(){
+        setCount(0);
+        setStart(null);
+        setEnd(null);
+    }
+
+    /**
+     * Copy Constructor. Deep Copy
+     * @param list list to copy
+     */
+    public SinglyLinkedList(SinglyLinkedList list){
+        this();
+        for(LinkNode node = list.getStart(); node != null; node = node.getNext()){
+            LinkNode newNode = new LinkNode(node.getData());
+            append(newNode);
+        }
+    }
 
     /**
      * Appends node to list
