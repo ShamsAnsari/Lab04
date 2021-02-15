@@ -84,6 +84,10 @@ public class SinglyLinkedList {
      * @param newNode  new node to insert
      */
     public void insertAfter(LinkNode currNode, LinkNode newNode) {
+        if(currNode == null){
+            prepend(newNode);
+            return;
+        }
         if (getStart() == null) {
             setStart(newNode);
             setEnd(newNode);
