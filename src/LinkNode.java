@@ -18,6 +18,9 @@ public class LinkNode {
         this(null, null);
     }
 
+    public LinkNode(USD data){
+        this(data,null);
+    }
     public LinkNode(USD data, LinkNode  next){
         setData(data);
         setNext(next);
@@ -53,7 +56,7 @@ public class LinkNode {
      */
     public void setNext(LinkNode next) {
         this.next = next;
-        
+
     }
 
 
