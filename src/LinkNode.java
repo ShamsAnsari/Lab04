@@ -12,6 +12,17 @@ public class LinkNode {
     private USD data;
     private LinkNode next;
 
+
+
+    public LinkNode(){
+        this(null, null);
+    }
+
+    public LinkNode(USD data, LinkNode  next){
+        setData(data);
+        setNext(next);
+    }
+
     /**
      * Gets the Data of the node
      * @return USD
@@ -42,7 +53,9 @@ public class LinkNode {
      */
     public void setNext(LinkNode next) {
         this.next = next;
+        
     }
+
 
 
 }

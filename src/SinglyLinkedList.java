@@ -24,79 +24,54 @@ public class SinglyLinkedList {
      */
     private LinkNode end;
 
-    /**
-     * Prepends node to list
-     *
-     * @param node
-     */
-    public void prepend(LinkNode node) {
-
+    public SinglyLinkedList() {
+        setStart(null);
+        setEnd(null);
     }
+
 
     /**
      * Appends node to list
-     *
-     * @param node
+     * @param node node to append
      */
     public void append(LinkNode node) {
-
+        if (getStart() == null) {
+            setStart(node);
+            setEnd(node);
+        } else {
+            getEnd().setNext(node);
+            setEnd(node);
+        }
     }
 
     /**
-     * Return LinkNode at specified index
+     * Prepends node to list
+     *
+     * @param node Node to prepend
+     */
+    public void prepend(LinkNode node) {
+        if(getStart() == null){
+            setStart(node);
+            setEnd(node);
+        } else{
+            node.setNext(getStart());
+            setStart(node);
+        }
+    }
+
+    /**
+     * Return LinkNode at specified index.
      *
      * @param index index of node
-     * @return LinkNode at specified index
+     * @return LinkNode at specified index.
      */
     public LinkNode get(int index) {
-        return null;
-    }
 
-    /**
-     * Replaces the node at the specified index in this list with the specified node.
-     *
-     * @param index index of node to replace
-     * @param node  node to replace current node with
-     */
-    public void set(int index, LinkNode node) {
-
-    }
-
-    /**
-     * Removes all elements in list
-     */
-    public void clear(){
-
-    }
-
-    /**
-     * Removes specified LinkNode from list if it exits
-     *
-     * @param node node to remove
-     */
-    public void remove(LinkNode node) {
-
-    }
-
-    /**
-     * Removes LinkNode at specified index
-     *
-     * @param index index of linkNode
-     */
-    public void remove(int index) {
-
-    }
-
-
-
-    /**
-     * Inserts newNode after currNode
-     *
-     * @param currNode
-     * @param newNode
-     */
-    public void insertAfter(LinkNode currNode, LinkNode newNode) {
-
+        LinkNode node = getStart();
+        for(int  i = 0; i < index; i++){
+            node = node.getNext();
+        }
+        return node;
     }
 
     /**
@@ -106,8 +81,84 @@ public class SinglyLinkedList {
      * @param node
      */
     public void insert(int index, LinkNode node) {
+        if(index == 0){
+            prepend(node);
+        }
+        else if (index  == getCount() - 1){
+            append(node);
+        }
+        insertAfter(get(index - 1), node);
+    }
+
+    /**
+     * Inserts newNode after currNode
+     *
+     * @param currNode
+     * @param newNode
+     */
+    public void insertAfter(LinkNode currNode, LinkNode newNode) {
+        if(getStart() == null){
+            setStart(newNode);
+            setEnd(newNode);
+        }
+        else if(currNode == getEnd()){
+            getEnd().setNext(newNode);
+            setEnd(newNode);
+        } else{
+            newNode.setNext(currNode.getNext());
+            currNode.setNext(newNode);
+        }
+    }
+
+    /**
+     * Replaces the node at the specified index in this list with the specified node.
+     *
+     * @param index index of node to replace
+     * @param node  node to replace current node with
+     * @return LinkNode. Returns node that previously occupied index
+     */
+    public LinkNode set(int index, LinkNode node) {
+        LinkNode prev = get(index);
+        remove(index);
+        insert(index, node);
+        return prev;
+    }
+
+    /**
+     * Removes all elements in list
+     */
+    public void clear() {
+        for(int i = 0; i < getCount(); i++){
+            remove(0);
+        }
 
     }
+
+
+
+    /**
+     * Removes specified LinkNode from list if it exits
+     *
+     * @param node node to remove
+     */
+    public void remove(LinkNode node) {
+        if(node == getStart()){
+
+        }
+    }
+
+
+
+    /**
+     * Removes LinkNode at specified index
+     *
+     * @param index index of linkNode
+     * @return LinkNode returns node at index
+     */
+    public LinkNode remove(int index) {
+
+    }
+
 
     /**
      * Returns the index of the last occurance of node in the list.
@@ -204,6 +255,19 @@ public class SinglyLinkedList {
         this.end = end;
     }
 
+    /**
+     * Prints list
+     */
+    public void print() {
+
+    }
+
+    /**
+     * Sorts list
+     */
+    public void sort() {
+
+    }
 
     @Override
     public String toString() {
