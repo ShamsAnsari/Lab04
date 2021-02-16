@@ -130,21 +130,27 @@ public class SinglyLinkedList {
      */
     public void removeAfter(LinkNode currNode) {
 
+
         //Special case, remove head
         if (currNode == null && getStart() != null) {
+            LinkNode removeNode = getStart();
             LinkNode sucNode = getStart().getNext();
             setStart(sucNode);
 
             if (sucNode == null) { //Removed last item
                 setEnd(null);
             }
+            removeNode.setNext(null);
+
         } else if (currNode != null) {
+            LinkNode removeNode = currNode.getNext();
             LinkNode sucNode = currNode.getNext().getNext();
             currNode.setNext(sucNode);
 
             if (sucNode == null) { // Removed Tail
                 setEnd(null);
             }
+            removeNode.setNext(null);
         }
         addCount(-1);
     }
@@ -239,10 +245,10 @@ public class SinglyLinkedList {
      * Removes all elements from list
      */
     public void clear() {
-        for (int i = 0; i < getCount(); i++) {
+        int len = getCount();
+        for (int i = 0; i < len; i++) {
             removeAfter(null);
         }
-        setCount(0);
     }
 
     /**

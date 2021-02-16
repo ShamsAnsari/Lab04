@@ -21,10 +21,9 @@ public class Lab4Main {
         LinkNode node7 = new LinkNode(new USD(7, 25, "USD"));
 
 
-        //SinglyLinkedList append(), prepend(), insertAfter() demonstration
-
-        System.out.println("SinglyLinkedList append(), prepend(), insertAfter(), search() Test");
-        System.out.println("---------------------------------------------------------");
+        //SinglyLinkedList append(), prepend(), insertAfter(), search(), removeAfter(), clear() demonstration
+        System.out.println("SinglyLinkedList: append(), prepend(), insertAfter(),search(), removeAfter(), clear()");
+        System.out.println("-------------------------------------------------------------------------------------");
         printFuncDemon("append", node1);
         list.append(node1);
         list.print();
@@ -37,12 +36,62 @@ public class Lab4Main {
         printFuncDemon("insertAfter", null, node4);
         list.insertAfter(null, node4);
         list.print();
-        printFuncDemon("insertAfter", node2,node5);
+        printFuncDemon("insertAfter", node2, node5);
         list.insertAfter(node2, node5);
         list.print();
-        printFuncDemon("insertAfter", node3,node6);
+        printFuncDemon("insertAfter", node3, node6);
         list.insertAfter(node3, node6);
         list.print();
+        printFuncDemon("search", node6);
+        System.out.print(list.search(node6.getData()) + "\n\t");
+        list.print();
+        printFuncDemon("search", node7);
+        System.out.print(list.search(node7.getData())+"\n\t");
+        list.print();
+        printFuncDemon("removeAfter", node6);
+        list.removeAfter(node6);
+        list.print();
+        printFuncDemon("removeAfter", new LinkNode());
+        list.removeAfter(null);
+        list.print();
+        printFuncDemon("removeAfter", node2);
+        list.removeAfter(node2);
+        list.print();
+        System.out.print("clear()\n\t");
+        list.clear();
+        list.print();
+
+        //SinglyLinkedList: insert(), sort(), get(), indexOf(), remove() --> Except sort() all are index based
+        System.out.println("SinglyLinkedList: insert(), sort(), get(), indexOf(), remove()");
+        System.out.println("------------------------------------------------------------");
+        System.out.print("insert(0," + node1 + ")\n\t");
+        list.insert(0, node1);
+        list.print();
+        System.out.print("insert(0," + node2 + ")\n\t");
+        list.insert(0, node2);
+        list.print();
+        System.out.print("insert(2," + node3 + ")\n\t");
+        list.insert(2, node3);
+        list.print();
+        System.out.print("insert(1," + node4 + ")\n\t");
+        list.insert(1, node4);
+        list.print();
+        System.out.print("sort()\n\t");
+        list.sort();
+        list.print();
+        System.out.print("get(2)\n\t");
+        System.out.print(list.get(2) +"\n\t");
+        list.print();
+        printFuncDemon("indexOf", node3);
+        System.out.print(list.indexOf(node3)+"\n\t");
+        list.print();
+        System.out.print("remove(0)\n\t");
+        list.remove(0);
+        list.print();
+        System.out.print("remove(1)\n\t");
+        list.remove(1);
+        list.print();
+
 
     }
 
