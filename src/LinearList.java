@@ -84,7 +84,6 @@ public abstract class LinearList<E> {
         return elements;
     }
 
-
     public boolean isEmpty() {
         return getCount() == 0;
     }
@@ -134,5 +133,19 @@ public abstract class LinearList<E> {
 
     public void setEnd(LinkNode<E> end) {
         this.end = end;
+    }
+
+    public void print(){
+        System.out.println(this);
+    }
+    @Override
+    public String toString() {
+        String out = "[ ";
+        for (E node : (E[]) toArray()) {
+            out += node + " ";
+        }
+        out += "]";
+        return out;
+
     }
 }

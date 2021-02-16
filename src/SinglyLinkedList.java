@@ -1,5 +1,3 @@
-import java.util.Comparator;
-
 /**
  * Lab 4
  *
@@ -18,17 +16,8 @@ public class SinglyLinkedList<E> extends LinearList<E> {
     }
 
     public void prepend(E element) {
-        LinkNode<E> node = new LinkNode<>(element);
-        if (isEmpty()) {
-            setStart(node);
-            setEnd(node);
-        } else {
-            node.setNext(getStart());
-            setStart(node);
-        }
-        addCount(1);
+        insertAfter(null, new LinkNode<E>(element));
     }
-
 
     public void insert(int index, E element) {
         if (index == 0) {
@@ -36,17 +25,65 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         } else if (index == getCount()) {
             add(element);
         } else {
-            LinkNode<E> node = new LinkNode<>(element);
-            LinkNode<E> prevNode = getNode(index - 1);
-            LinkNode<E> sucNode = prevNode.getNext();
-            prevNode.setNext(node);
-            prevNode.setNext(node);
-            addCount(1);
+            insertAfter(getNode(index - 1), new LinkNode<>(element));
         }
     }
 
     public E get(int index) {
         return getNode(index).getData();
+    }
+
+    public E remove(int index) {
+        E data = null;
+        if (index == 0) {
+            data = remove();
+        } else {
+            data = removeAfter(getNode(index - 1)).getData();
+        }
+        return data;
+    }
+
+    private LinkNode<E> removeAfter(LinkNode<E> currNode) {
+        LinkNode<E> node = null;
+        //Remove head
+        if (currNode == null) {
+            node = getStart();
+            LinkNode<E> sucNode = node.getNext();
+            setStart(sucNode);
+            if (sucNode == null) {
+                setEnd(null);
+            }
+        } else {
+            node = currNode.getNext();
+            LinkNode<E> sucNode = node.getNext();
+            currNode.setNext(sucNode);
+
+            if (sucNode == null) {
+                setEnd(currNode);
+            }
+
+        }
+        addCount(-1);
+        node.setNext(null);
+        return node;
+    }
+
+    private void insertAfter(LinkNode<E> currNode, LinkNode<E> node) {
+        if (isEmpty()) {
+            setStart(node);
+            setEnd(node);
+        } else if (currNode == getEnd()) {
+            getEnd().setNext(node);
+            setEnd(node);
+        } else if (currNode == null) {
+            node.setNext(getStart());
+            setStart(node);
+        } else {
+            node.setNext(currNode.getNext());
+            currNode.setNext(node);
+        }
+
+        addCount(1);
     }
 
     private LinkNode<E> getNode(int index) {
@@ -57,32 +94,6 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         return node;
     }
 
-    /**
-     * Removes and returns element at given index
-     *
-     * @param index
-     * @return
-     */
-    public E remove(int index) {
-        E data = null;
-        if (index == 0) {
-            data = remove();
-        } else if (index == getCount() - 1) {
-            LinkNode<E> prevNode = getNode(index - 1);
-            data = prevNode.getNext().getData();
-            prevNode.setNext(null);
-            setEnd(prevNode);
-            addCount(-1);
-        } else {
-            LinkNode<E> prevNode = getNode(index - 1);
-            LinkNode<E> node = prevNode.getNext();
-            LinkNode<E> sucNode = node.getNext();
-            prevNode.setNext(sucNode);
-            data = node.getData();
-            addCount(-1);
-        }
-        return data;
-    }
 
 /*    public void sort(Comparator<E> c) {
         if(getCount() < 2){
@@ -103,9 +114,7 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         }
     }*/
 
-  /*  private LinkNode<E> removeAfter(LinkNode<E> node){
 
-    }*/
 
 /*    private LinkNode<E> findInsertionPosition(E dataVal, Comparator<E> c){
         LinkNode<E> prevNode = null;
