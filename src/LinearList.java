@@ -1,4 +1,6 @@
-public class LinearList<E> {
+import java.util.LinkedList;
+
+public abstract class LinearList<E> {
     private int count;
     private LinkNode<E> start;
     private LinkNode<E> end;
@@ -13,12 +15,14 @@ public class LinearList<E> {
         LinkNode<E> node = new LinkNode<>(element);
         if (getStart() == null) {
             setStart(node);
+            setEnd(node);
         } else {
             getEnd().setNext(node);
+            setEnd(node);
         }
-        setEnd(node);
         addCount(1);
     }
+
 
     /**
      * Removes and returns element at start of list
@@ -72,6 +76,14 @@ public class LinearList<E> {
         }
     }
 
+    public Object[] toArray() {
+        Object[] elements = new Object[getCount()];
+        int i = 0;
+        for (LinkNode<E> node = getStart(); node != null; node = node.getNext())
+            elements[i++] = node.getData();
+        return elements;
+    }
+
 
     public boolean isEmpty() {
         return getCount() == 0;
@@ -89,7 +101,6 @@ public class LinearList<E> {
         }
         return true;
     }
-
 
 
     public int size() {

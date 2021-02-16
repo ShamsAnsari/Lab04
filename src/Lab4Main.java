@@ -1,3 +1,5 @@
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -12,8 +14,9 @@ import java.util.LinkedList;
  */
 public class Lab4Main {
     public static void main(String[] args) {
-        LinkedList<USD>
-
+        LinkedList list;
+        Collection collection;
+        Collections.sort();
     }
 
 

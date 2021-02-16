@@ -8,9 +8,9 @@
  * Class: CIS22C
  * @Date: 2/14/2021
  */
-public class LinkNode<T> {
+public class LinkNode<E> {
 
-    private T data;
+    private E data;
     private LinkNode next;
 
 
@@ -19,25 +19,24 @@ public class LinkNode<T> {
 
     }
 
-    public LinkNode(T data) {
+    public LinkNode(E data) {
         this(data, null);
     }
 
-    public LinkNode(T data, LinkNode next) {
+    public LinkNode(E data, LinkNode next) {
         setData(data);
         setNext(next);
     }
 
-
-    public T getData() {
+    public E getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(E data) {
         this.data = data;
     }
 
-    public LinkNode getNext() {
+    public LinkNode<E> getNext() {
         return next;
     }
 
