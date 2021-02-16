@@ -22,7 +22,7 @@ public class Lab4Main {
 
 
         //SinglyLinkedList append(), prepend(), insertAfter(), search(), removeAfter(), clear() demonstration
-        System.out.println("SinglyLinkedList: append(), prepend(), insertAfter(),search(), removeAfter(), clear()");
+        System.out.println("\nSinglyLinkedList: append(), prepend(), insertAfter(),search(), removeAfter(), clear()");
         System.out.println("-------------------------------------------------------------------------------------");
         printFuncDemon("append", node1);
         list.append(node1);
@@ -62,7 +62,7 @@ public class Lab4Main {
         list.print();
 
         //SinglyLinkedList: insert(), sort(), get(), indexOf(), remove() --> Except sort() all are index based
-        System.out.println("SinglyLinkedList: insert(), sort(), get(), indexOf(), remove()");
+        System.out.println("\nSinglyLinkedList: insert(), sort(), get(), indexOf(), remove()");
         System.out.println("------------------------------------------------------------");
         System.out.print("insert(0," + node1 + ")\n\t");
         list.insert(0, node1);
