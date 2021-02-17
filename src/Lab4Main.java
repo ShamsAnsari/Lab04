@@ -21,11 +21,10 @@ public class Lab4Main {
 
     public static void main(String[] args) {
 
+        //Create lists
         SinglyLinkedList<USD> list = new SinglyLinkedList<>();
         Queue<USD> queue = new Queue<>();
         Stack<USD> stack = new Stack<>();
-
-
 
 
         /**
@@ -37,10 +36,12 @@ public class Lab4Main {
          * 4. print(ADT)
          *
          */
+        //Do demo
         singlyLinkedListDemo(list);
         stackDemo(stack);
         queueDemo(queue);
 
+        //Clear
         list.clear();
         stack.clear();
         queue.clear();
