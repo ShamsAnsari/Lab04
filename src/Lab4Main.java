@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 /**
  * Lab 4
  *
@@ -26,6 +28,8 @@ public class Lab4Main {
         Queue<USD> queue = new Queue<>();
         Stack<USD> stack = new Stack<>();
 
+        //Create Comparator
+        Comparator<USD> c = Comparator.naturalOrder();
 
         /**
          * Format for demos:
@@ -37,7 +41,7 @@ public class Lab4Main {
          *
          */
         //Do demo
-        singlyLinkedListDemo(list);
+        singlyLinkedListDemo(list, c);
         stackDemo(stack);
         queueDemo(queue);
 
@@ -192,19 +196,20 @@ public class Lab4Main {
 
     /**
      * SinglyLinkedList Demonstration
-     * Demonstrates: append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i)
+     * Demonstrates: append(E), prepend(E), insert(i, E), indexOf(E), get(i), sort(), remove(i)
      * Does not demo: some parent functions such as isEmpty(), clear() etc
      * @param list SinglyLinkedList of USD's
+     * @param c comparator
      */
-    public static void singlyLinkedListDemo(SinglyLinkedList<USD> list) {
+    public static void singlyLinkedListDemo(SinglyLinkedList<USD> list, Comparator<USD> c) {
 
         list.clear();
         //SinglyLinkedList Demonstration
-        //append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i),
+        //append(E), prepend(E), insert(i, E), indexOf(E), get(i), sort(), remove(i),
         System.out.println("------------------------------------------------------------------");
         System.out.println("SinglyLinkedList Demonstration");
         System.out.println("------------------------------------------------------------------");
-        System.out.println("append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i)");
+        System.out.println("append(E), prepend(E), insert(i, E), indexOf(E), get(i), sort(), remove(i)");
         System.out.println("------------------------------------------------------------------");
 
         //append(E)
@@ -253,6 +258,11 @@ public class Lab4Main {
         printFunc("get", index);
         USD obj = list.get(index);
         System.out.print(obj + "\n\t");
+        list.print();
+
+        //sort()
+        System.out.print("sort()\n\t");
+        list.sort(c);
         list.print();
 
         //remove(i)
