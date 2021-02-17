@@ -23,4 +23,12 @@ public class Stack<E> extends LinearList<E> {
         addCount(1);
     }
 
+    @Override
+    public boolean equals(LinearList<E> list){
+        if(list instanceof Stack){
+            return super.equals(list);
+        }
+        return false;
+    }
+
 }

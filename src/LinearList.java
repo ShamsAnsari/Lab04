@@ -1,13 +1,35 @@
-import java.util.LinkedList;
-
+/**
+ * Lab 4
+ *
+ * @Author Shams Ansari
+ * Learn about Lists, Stacks and Queues
+ * <p>
+ * Prof: Manish Goel
+ * Class: CIS22C
+ * @Date: 2/14/2021
+ * <p>
+ * LinearList is superclass of LinkedList, Stack and Queue
+ */
 public abstract class LinearList<E> {
+    /**
+     * Number of elements in list
+     */
     private int count;
+
+    /**
+     * Head of list
+     */
     private LinkNode<E> start;
+
+    /**
+     * Tail of list
+     */
     private LinkNode<E> end;
 
 
     /**
      * Appends element
+     *
      * @param element element to append
      */
     public void add(E element) {
@@ -24,6 +46,7 @@ public abstract class LinearList<E> {
 
     /**
      * Removes and returns start of list
+     *
      * @return head of list
      */
     public E remove() {
@@ -42,6 +65,7 @@ public abstract class LinearList<E> {
 
     /**
      * Returns but not remove start of list
+     *
      * @return element at start of list
      */
     public E peek() {
@@ -53,6 +77,7 @@ public abstract class LinearList<E> {
 
     /**
      * Checks if elements exists in list
+     *
      * @param element element to check
      * @return True if element exist, False otherwise
      */
@@ -62,6 +87,7 @@ public abstract class LinearList<E> {
 
     /**
      * Gets index of element
+     *
      * @param element element to find
      * @return If found, return index otherwise return -1
      */
@@ -89,10 +115,11 @@ public abstract class LinearList<E> {
 
     /**
      * Converts list into array.
+     *
      * @return an array of elements
      */
     public Object[] toArray() {
-        if(isEmpty()){
+        if (isEmpty()) {
             return new Object[0];
         }
         Object[] elements = new Object[getCount()];
@@ -104,10 +131,19 @@ public abstract class LinearList<E> {
 
     /**
      * Checks if list is empty
+     *
      * @return true if empty, false otherwise
      */
     public boolean isEmpty() {
         return getCount() == 0;
+    }
+
+    /**
+     * Size of list
+     * @return size of list
+     */
+    public int size() {
+        return getCount();
     }
 
     /**
@@ -129,10 +165,34 @@ public abstract class LinearList<E> {
     }
 
 
-    public int size() {
-        return getCount();
+
+    /**
+     * Prints list
+     */
+    public void print() {
+        System.out.println(this);
     }
 
+    /**
+     * String is in format [ a, b, d, c, f, g]
+     * @return list in string format
+     */
+    @Override
+    public String toString() {
+        String out = "[ ";
+        for (E node : (E[]) toArray()) {
+            out += node + " ";
+        }
+        out += "]";
+        return out;
+
+    }
+
+
+
+    //===================
+    //Getters and setters
+    //===================
 
     public void addCount(int n) {
         count += n;
@@ -162,17 +222,4 @@ public abstract class LinearList<E> {
         this.end = end;
     }
 
-    public void print(){
-        System.out.println(this);
-    }
-    @Override
-    public String toString() {
-        String out = "[ ";
-        for (E node : (E[]) toArray()) {
-            out += node + " ";
-        }
-        out += "]";
-        return out;
-
-    }
 }

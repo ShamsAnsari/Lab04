@@ -94,37 +94,12 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         return node;
     }
 
-
-/*    public void sort(Comparator<E> c) {
-        if(getCount() < 2){
-            return;
+    @Override
+    public boolean equals(LinearList<E> list){
+        if(list instanceof SinglyLinkedList){
+            return super.equals(list);
         }
-        LinkNode<E> beforeCur = getStart();
-        LinkNode<E> curNode = getStart().getNext();
-
-        while(curNode != null){
-            LinkNode<E> next = curNode.getNext();
-            LinkNode<E> position = findInsertionPosition(curNode.getData(), c);
-
-            if(position == beforeCur){
-                beforeCur = curNode;
-            } else {
-
-            }
-        }
-    }*/
-
-
-
-/*    private LinkNode<E> findInsertionPosition(E dataVal, Comparator<E> c){
-        LinkNode<E> prevNode = null;
-        LinkNode<E> node = getStart();
-        while(node != null && c.compare(dataVal, node.getData()) > 0){
-            prevNode = node;
-            node = node.getNext();
-        }
-        return prevNode;
-    }*/
-
+        return false;
+    }
 
 }
