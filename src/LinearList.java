@@ -8,12 +8,11 @@ public abstract class LinearList<E> {
 
     /**
      * Appends element
-     *
-     * @param element
+     * @param element element to append
      */
     public void add(E element) {
         LinkNode<E> node = new LinkNode<>(element);
-        if (getStart() == null) {
+        if (getStart() == null) { //First node
             setStart(node);
             setEnd(node);
         } else {
@@ -23,11 +22,9 @@ public abstract class LinearList<E> {
         addCount(1);
     }
 
-
     /**
-     * Removes and returns element at start of list
-     *
-     * @return
+     * Removes and returns start of list
+     * @return head of list
      */
     public E remove() {
         if (isEmpty()) {
@@ -45,8 +42,7 @@ public abstract class LinearList<E> {
 
     /**
      * Returns but not remove start of list
-     *
-     * @return
+     * @return element at start of list
      */
     public E peek() {
         if (isEmpty()) {
@@ -55,20 +51,35 @@ public abstract class LinearList<E> {
         return getStart().getData();
     }
 
+    /**
+     * Checks if elements exists in list
+     * @param element element to check
+     * @return True if element exist, False otherwise
+     */
     public boolean contains(E element) {
         return indexOf(element) > -1;
     }
 
+    /**
+     * Gets index of element
+     * @param element element to find
+     * @return If found, return index otherwise return -1
+     */
     public int indexOf(E element) {
         int i = 0;
+        //Traverse list
         for (LinkNode<E> node = getStart(); node != null; node = node.getNext(), i++) {
             if (node.getData().equals(element)) {
-                return i;
+                return i; // element found
             }
         }
+        //element not found
         return -1;
     }
 
+    /**
+     * Removes all elements from list.
+     */
     public void clear() {
         int len = getCount();
         for (int i = 0; i < len; i++) {
@@ -76,6 +87,10 @@ public abstract class LinearList<E> {
         }
     }
 
+    /**
+     * Converts list into array.
+     * @return an array of elements
+     */
     public Object[] toArray() {
         if(isEmpty()){
             return new Object[0];
@@ -87,10 +102,19 @@ public abstract class LinearList<E> {
         return elements;
     }
 
+    /**
+     * Checks if list is empty
+     * @return true if empty, false otherwise
+     */
     public boolean isEmpty() {
         return getCount() == 0;
     }
 
+    /**
+     * Checks for equality.
+     * @param list LinearList
+     * @return True if all elements
+     */
     public boolean equals(LinearList<E> list) {
         if (list.size() != size()) {
             return false;

@@ -9,111 +9,269 @@
  * @Date: 2/14/2021
  */
 public class Lab4Main {
+
+    //USD objects to be used in Demo
+    static USD money1 = new USD(5, 6, "USD");
+    static USD money2 = new USD(1, 99, "USD");
+    static USD money3 = new USD(9, 50, "USD");
+    static USD money4 = new USD(7, 70, "USD");
+    static USD money5 = new USD(2, 0, "USD");
+    static USD money6 = new USD(3, 50, "USD");
+    static USD money7 = new USD(11, 1, "USD");
+
     public static void main(String[] args) {
-        USD money1 = new USD(5, 6, "USD");
-        USD money2 = new USD(1, 99, "USD");
-        USD money3 = new USD(9, 50, "USD");
-        USD money4 = new USD(7, 70, "USD");
-        USD money5 = new USD(2, 0, "USD");
-        USD money6 = new USD(3, 50, "USD");
-        USD money7 = new USD(11, 1, "USD");
 
-
-        USD[] amounts = {money1, money2, money3, money4, money5, money6, money7};
-        SinglyLinkedList<USD> singlyLinkedList = new SinglyLinkedList<>();
+        SinglyLinkedList<USD> list = new SinglyLinkedList<>();
         Queue<USD> queue = new Queue<>();
         Stack<USD> stack = new Stack<>();
 
-        //SinglyLinkedList Demonstration
-        //append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i),
-        System.out.println("SinglyLinkedList Demonstration");
+        /**
+         * Format for demos:
+         *
+         * 1. Print( what function is being performed)
+         * 2. perform function on ADT
+         * 3. optional - print return value
+         * 4. print(ADT)
+         *
+         */
+        singlyLinkedListDemo(list);
+        stackDemo(stack);
+        queueDemo(queue);
+
+        list.clear();
+        stack.clear();
+        queue.clear();
+
+
+    }
+
+    /**
+     * Queue Demonstration
+     * Demonstrates: enqueue(E), dequeue(), peekFront(), peekRear()
+     * Does not demo: inherited parent function such as contains(E), indexOf(E), remove(), isEmpty() etc
+     *
+     * @param queue empty queue of USD's
+     */
+    public static void queueDemo(Queue<USD> queue) {
+        queue.clear();
+
+        //Queue Demonstration
+        //enqueue(E), dequeue(), peekFront(), peekRear()
         System.out.println("------------------------------------------------------------------");
-        System.out.println("append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i)");
-        printFunc("append", money1);
-        singlyLinkedList.append(money1);
-        singlyLinkedList.print();
-        printFunc("append", money2);
-        singlyLinkedList.append(money2);
-        singlyLinkedList.print();
-        printFunc("prepend", money3);
-        singlyLinkedList.prepend(money3);
-        singlyLinkedList.print();
-        printFunc("insert", 1, money4);
-        singlyLinkedList.insert(1, money4);
-        singlyLinkedList.print();
-        printFunc("insert", 4, money5);
-        singlyLinkedList.insert(4, money5);
-        singlyLinkedList.print();
-        printFunc("insert", 0, money6);
-        singlyLinkedList.insert(0, money6);
-        singlyLinkedList.print();
-        printFunc("indexOf", money7);
-        int index = singlyLinkedList.indexOf(money7);
-        System.out.print(index + "\n\t");
-        singlyLinkedList.print();
-        printFunc("indexOf", money4);
-        index = singlyLinkedList.indexOf(money4);
-        System.out.print(index + "\n\t");
-        singlyLinkedList.print();
-        printFunc("get", index);
-        USD obj = singlyLinkedList.get(index);
+        System.out.println("Queue Demonstration");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("enqueue(E), dequeue(), peekFront(), peekRear()");
+        System.out.println("------------------------------------------------------------------");
+
+        //enqueue(E)
+        printFunc("enqueue", money1);
+        queue.enqueue(money1);
+        queue.print();
+
+        //enqueue(E)
+        printFunc("enqueue", money2);
+        queue.enqueue(money2);
+        queue.print();
+
+        //dequeue()
+        System.out.print("dequeue()\n\t");
+        USD obj = queue.dequeue();
         System.out.print(obj + "\n\t");
-        singlyLinkedList.print();
-        printFunc("remove", 4);
-        singlyLinkedList.remove(4);
-        singlyLinkedList.print();
-        System.out.println("clear()");
-        singlyLinkedList.clear();
-        singlyLinkedList.print();
+        queue.print();
 
+        //enqueue(E)
+        printFunc("enqueue", money3);
+        queue.enqueue(money3);
+        queue.print();
 
+        //enqueue(E)
+        printFunc("enqueue", money4);
+        queue.enqueue(money4);
+        queue.print();
+
+        //peekFront()
+        System.out.print("peekFront()\n\t");
+        obj = queue.peekFront();
+        System.out.print(obj + "\n\t");
+        queue.print();
+
+        //peekRear()
+        System.out.print("peekRear()\n\t");
+        obj = queue.peekRear();
+        System.out.print(obj + "\n\t");
+        queue.print();
+
+        //dequeue() X3
+        for (int i = 0; i < 3; i++) {
+            System.out.print("dequeue()\n\t");
+            obj = queue.dequeue();
+            System.out.print(obj + "\n\t");
+            queue.print();
+        }
+
+        //peekFront()
+        System.out.print("peekFront()\n\t");
+        obj = queue.peekFront();
+        System.out.print(obj + "\n\t");
+        queue.print();
+
+        //peekRear()
+        System.out.print("peekRear()\n\t");
+        obj = queue.peekRear();
+        System.out.print(obj + "\n\t");
+        queue.print();
+    }
+
+    /**
+     * Stack Demonstration
+     * Demonstrates: push(E), pop(), peek()
+     * Does not demo: inherited parent functions such as contains(E), indexOf() etc
+     * @param stack Stack os USD's
+     */
+    public static void stackDemo(Stack<USD> stack) {
+        stack.clear();
         //Stack Demonstration
         //push(E), pop(), peek()
-        System.out.println("\nStack Demonstration");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("Stack Demonstration");
         System.out.println("------------------------------------------------------------------");
         System.out.println("push(E), pop(), peek()");
+        System.out.println("------------------------------------------------------------------");
+
+        //push(E)
         printFunc("push", money1);
         stack.push(money1);
         stack.print();
+
+        //push(E)
         printFunc("push", money2);
         stack.push(money2);
         stack.print();
+
+        //pop()
         System.out.print("pop()\n\t");
-        obj = stack.pop();
+        USD obj = stack.pop();
         System.out.print(obj + "\n\t");
         stack.print();
+
+        //push(E)
         printFunc("push", money3);
         stack.push(money3);
         stack.print();
+
+        //push(E)
         printFunc("push", money4);
         stack.push(money4);
         stack.print();
+
+        //peek()
         System.out.print("peek()\n\t");
         obj = stack.peek();
         System.out.print(obj + "\n\t");
         stack.print();
+
+        //pop() X3
         for (int i = 0; i < 3; i++) {
             System.out.print("pop()\n\t");
             obj = stack.pop();
             System.out.print(obj + "\n\t");
             stack.print();
         }
+
+        //peek()
         System.out.print("peek()\n\t");
         obj = stack.peek();
         System.out.print(obj + "\n\t");
         stack.print();
 
+    }
 
-        //Queue Demonstration
+    /**
+     * SinglyLinkedList Demonstration
+     * Demonstrates: append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i)
+     * Does not demo: some parent functions such as isEmpty(), clear() etc
+     * @param list SinglyLinkedList of USD's
+     */
+    public static void singlyLinkedListDemo(SinglyLinkedList<USD> list) {
 
+        list.clear();
+        //SinglyLinkedList Demonstration
+        //append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i),
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("SinglyLinkedList Demonstration");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i)");
+        System.out.println("------------------------------------------------------------------");
+
+        //append(E)
+        printFunc("append", money1);
+        list.append(money1);
+        list.print();
+
+        //append(E)
+        printFunc("append", money2);
+        list.append(money2);
+        list.print();
+
+        //prepend(E)
+        printFunc("prepend", money3);
+        list.prepend(money3);
+        list.print();
+
+        //insert(i, E)
+        printFunc("insert", 1, money4);
+        list.insert(1, money4);
+        list.print();
+
+        //insert(i,E)
+        printFunc("insert", 4, money5);
+        list.insert(4, money5);
+        list.print();
+
+        //insert(i,E)
+        printFunc("insert", 0, money6);
+        list.insert(0, money6);
+        list.print();
+
+        //indexOf(E)
+        printFunc("indexOf", money7);
+        int index = list.indexOf(money7);
+        System.out.print(index + "\n\t");
+        list.print();
+
+        //indexOf(E)
+        printFunc("indexOf", money4);
+        index = list.indexOf(money4);
+        System.out.print(index + "\n\t");
+        list.print();
+
+        //get(i)
+        printFunc("get", index);
+        USD obj = list.get(index);
+        System.out.print(obj + "\n\t");
+        list.print();
+
+        //remove(i)
+        printFunc("remove", 4);
+        list.remove(4);
+        list.print();
+
+        //clear()
+        System.out.print("clear()\n\t");
+        list.clear();
+        list.print();
 
     }
 
 
-    public static void printFunc(String funcName, USD... elements) {
-        printFunc(funcName, -1, elements);
-    }
-
+    /**
+     * Prints out the function name and parameters
+     * EX:
+     * print("insert", 1, 5) ==> "insert(1, 5)"
+     * @param funcName function name
+     * @param index index parameter of function
+     * @param elements element parameters of function
+     */
     public static void printFunc(String funcName, int index, USD... elements) {
         String out = funcName + "(";
         if (index != -1) {
@@ -126,6 +284,15 @@ public class Lab4Main {
         }
         out = out.substring(0, out.length() - 2) + ")\n\t";
         System.out.print(out);
+    }
+
+    /**
+     * Same is printFunc, but without index parameter
+     * @param funcName function name
+     * @param elements element parameter
+     */
+    public static void printFunc(String funcName, USD... elements) {
+        printFunc(funcName, -1, elements);
     }
 
 
