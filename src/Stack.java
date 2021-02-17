@@ -12,10 +12,17 @@
  */
 public class Stack<E> extends LinearList<E> {
 
+    /**
+     * Default constructor
+     */
     public Stack(){
 
     }
 
+    /**
+     * Shallow copy constructor
+     * @param list list to copy
+     */
     public Stack(LinearList<E> list){
         for(LinkNode<E> node = list.getStart(); node != null; node = node.getNext()){
             push(node.getData());

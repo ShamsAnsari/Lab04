@@ -21,6 +21,14 @@ public class Lab4Main {
     static USD money6 = new USD(3, 50, "USD");
     static USD money7 = new USD(11, 1, "USD");
 
+    /**
+     * Create List
+     * optional- create comparator
+     * call demo functions
+     * clear lists
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         //Create lists

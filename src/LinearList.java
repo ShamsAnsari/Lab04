@@ -58,6 +58,7 @@ public abstract class LinearList<E> {
 
         LinkNode<E> node = getStart();
         setStart(node.getNext());
+
         if (node == getEnd()) {
             setEnd(null);
         }

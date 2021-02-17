@@ -14,7 +14,9 @@ import java.util.Comparator;
  */
 public class SinglyLinkedList<E> extends LinearList<E> {
 
-
+    /**
+     * Default constructor
+     */
     public SinglyLinkedList() {
 
     }
@@ -25,6 +27,7 @@ public class SinglyLinkedList<E> extends LinearList<E> {
      * @param list LinearList
      */
     public SinglyLinkedList(LinearList<E> list) {
+        //Loop through list and create shallow copy
         for (LinkNode<E> node = list.getStart(); node != null; node = node.getNext()) {
             append(node.getData());
         }
@@ -82,7 +85,7 @@ public class SinglyLinkedList<E> extends LinearList<E> {
      */
     public E remove(int index) {
         E data = null;
-        if (index == 0) {
+        if (index == 0) { //head
             data = remove();
         } else {
             data = removeAfter(getNode(index - 1)).getData();
@@ -92,6 +95,7 @@ public class SinglyLinkedList<E> extends LinearList<E> {
 
     /**
      * Sorts list with insertion sort
+     *
      * @param c Comparator of Element
      */
     public void sort(Comparator<E> c) {
@@ -120,16 +124,17 @@ public class SinglyLinkedList<E> extends LinearList<E> {
     /**
      * Helper function for insertion sort
      * Finds index where next element is greater than data val
+     *
      * @param data element
-     * @param c comparator
+     * @param c    comparator
      * @return index of insertion
      */
-    private LinkNode<E> findInsertionPosition(E data,Comparator<E> c ) {
+    private LinkNode<E> findInsertionPosition(E data, Comparator<E> c) {
         LinkNode<E> prevNode = null;
         LinkNode<E> node = getStart();
 
         //Find index, if next index is greater stop loop
-        while(node != null && c.compare(data, node.getData()) > 0 ){
+        while (node != null && c.compare(data, node.getData()) > 0) {
             prevNode = node;
             node = node.getNext();
         }
@@ -138,6 +143,16 @@ public class SinglyLinkedList<E> extends LinearList<E> {
 
     /**
      * removes node after specified node
+     * PseudoCode:
+     * <p>
+     * if(node == null){
+     *      remove headnode
+     * } else{
+     *      remove node
+     * if(node is tail node){
+     * adjust tail node
+     * }
+     * }
      *
      * @param currNode node in list
      * @return node that is removed
@@ -169,6 +184,14 @@ public class SinglyLinkedList<E> extends LinearList<E> {
 
     /**
      * Inserts node after currNode in list
+     * Pseudocode
+     * if(list is empty){
+     *      set head and tail to node
+     * } else if(currNode is tail node){
+     *      prepend element, adjust tail
+     * } else{ //middle insetion
+     *      insert node
+     * }
      *
      * @param currNode node in list
      * @param node     new node

@@ -20,7 +20,7 @@ public class Queue<E> extends LinearList<E> {
     }
 
     /**
-     * Copy constructor
+     * Copy constructor (shallow copy)
      * @param list
      */
     public Queue(LinearList<E> list){
