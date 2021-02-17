@@ -25,6 +25,9 @@ public class Lab4Main {
         Queue<USD> queue = new Queue<>();
         Stack<USD> stack = new Stack<>();
 
+
+
+
         /**
          * Format for demos:
          *

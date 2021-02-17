@@ -11,6 +11,8 @@
  * LinearList is superclass of LinkedList, Stack and Queue
  */
 public abstract class LinearList<E> {
+
+
     /**
      * Number of elements in list
      */

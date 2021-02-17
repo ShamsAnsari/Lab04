@@ -7,18 +7,46 @@
  * Prof: Manish Goel
  * Class: CIS22C
  * @Date: 2/14/2021
+ *
+ * Represents SinglyLinkedList ADT with basic functions
  */
 public class SinglyLinkedList<E> extends LinearList<E> {
 
 
+    public SinglyLinkedList(){
+
+    }
+
+    /**
+     * Copy constructor
+     * @param list LinearList
+     */
+    public SinglyLinkedList(LinearList<E> list){
+        for(LinkNode<E> node = list.getStart(); node != null; node = node.getNext()){
+            append(node.getData());
+        }
+    }
+    /**
+     * Adds element to end of list
+     * @param element Element to append
+     */
     public void append(E element) {
         add(element);
     }
 
+    /**
+     * Adds element to start of list
+     * @param element element ot append
+     */
     public void prepend(E element) {
         insertAfter(null, new LinkNode<E>(element));
     }
 
+    /**
+     * Inserts element at specified index, moves subsequent elements to the right
+     * @param index index of insertion
+     * @param element element to insert
+     */
     public void insert(int index, E element) {
         if (index == 0) {
             prepend(element);
@@ -29,10 +57,20 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         }
     }
 
+    /**
+     * gets element at specified index
+     * @param index [0,size() - 1]
+     * @return element at specified index
+     */
     public E get(int index) {
         return getNode(index).getData();
     }
 
+    /**
+     * Removes element at specified index
+     * @param index [0,size() - 1]
+     * @return element at the specified index
+     */
     public E remove(int index) {
         E data = null;
         if (index == 0) {
@@ -43,6 +81,11 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         return data;
     }
 
+    /**
+     * removes node after specified node
+     * @param currNode node in list
+     * @return node that is removed
+     */
     private LinkNode<E> removeAfter(LinkNode<E> currNode) {
         LinkNode<E> node = null;
         //Remove head
@@ -68,6 +111,11 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         return node;
     }
 
+    /**
+     * Inserts node after currNode in list
+     * @param currNode node in list
+     * @param node new node
+     */
     private void insertAfter(LinkNode<E> currNode, LinkNode<E> node) {
         if (isEmpty()) {
             setStart(node);
@@ -86,6 +134,11 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         addCount(1);
     }
 
+    /**
+     * Gets node at specified index
+     * @param index range=[0, size() - 1]
+     * @return node
+     */
     private LinkNode<E> getNode(int index) {
         LinkNode<E> node = getStart();
         for (int i = 0; i < index; i++) {
@@ -94,6 +147,11 @@ public class SinglyLinkedList<E> extends LinearList<E> {
         return node;
     }
 
+    /**
+     * Checks if two SinglyLinkedLists are equal
+     * @param list LinearList
+     * @return True if all elements are equal, false otherwise
+     */
     @Override
     public boolean equals(LinearList<E> list){
         if(list instanceof SinglyLinkedList){

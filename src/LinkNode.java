@@ -38,15 +38,19 @@ public class LinkNode<E> {
     }
 
     /**
-     *
-     * @param data
-     * @param next
+     * Creates a Linknode with specified data and next
+     * @param data E
+     * @param next Linknode
      */
     public LinkNode(E data, LinkNode next) {
         setData(data);
         setNext(next);
     }
+    
 
+    //===================
+    //Getters and setters
+    //===================
     public E getData() {
         return data;
     }
