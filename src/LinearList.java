@@ -77,6 +77,9 @@ public abstract class LinearList<E> {
     }
 
     public Object[] toArray() {
+        if(isEmpty()){
+            return new Object[0];
+        }
         Object[] elements = new Object[getCount()];
         int i = 0;
         for (LinkNode<E> node = getStart(); node != null; node = node.getNext())

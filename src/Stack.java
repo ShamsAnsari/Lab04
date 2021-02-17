@@ -20,6 +20,7 @@ public class Stack<E> extends LinearList<E> {
             node.setNext(getStart());
             setStart(node);
         }
+        addCount(1);
     }
 
 }

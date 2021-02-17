@@ -1,4 +1,3 @@
-
 /**
  * Lab 4
  *
@@ -19,68 +18,108 @@ public class Lab4Main {
         USD money6 = new USD(3, 50, "USD");
         USD money7 = new USD(11, 1, "USD");
 
+
         USD[] amounts = {money1, money2, money3, money4, money5, money6, money7};
+        SinglyLinkedList<USD> singlyLinkedList = new SinglyLinkedList<>();
+        Queue<USD> queue = new Queue<>();
+        Stack<USD> stack = new Stack<>();
 
-        SinglyLinkedList<USD> list = new SinglyLinkedList<>();
-
-        int index = 0;
-        USD obj = null;
         //SinglyLinkedList Demonstration
         //append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i),
         System.out.println("SinglyLinkedList Demonstration");
         System.out.println("------------------------------------------------------------------");
         System.out.println("append(E), prepend(E), insert(i, E), indexOf(E), get(i), remove(i)");
-        printDemo("append", money1);
-        list.append(money1);
-        list.print();
-        printDemo("append", money2);
-        list.append(money2);
-        list.print();
-        printDemo("prepend", money3);
-        list.prepend(money3);
-        list.print();
-        printDemo("insert", 1, money4);
-        list.insert(1, money4);
-        list.print();
-        printDemo("insert", 4, money5);
-        list.insert(4, money5);
-        list.print();
-        printDemo("insert", 0, money6);
-        list.insert(0, money6);
-        list.print();
-        printDemo("indexOf", money7);
-        index = list.indexOf(money7);
+        printFunc("append", money1);
+        singlyLinkedList.append(money1);
+        singlyLinkedList.print();
+        printFunc("append", money2);
+        singlyLinkedList.append(money2);
+        singlyLinkedList.print();
+        printFunc("prepend", money3);
+        singlyLinkedList.prepend(money3);
+        singlyLinkedList.print();
+        printFunc("insert", 1, money4);
+        singlyLinkedList.insert(1, money4);
+        singlyLinkedList.print();
+        printFunc("insert", 4, money5);
+        singlyLinkedList.insert(4, money5);
+        singlyLinkedList.print();
+        printFunc("insert", 0, money6);
+        singlyLinkedList.insert(0, money6);
+        singlyLinkedList.print();
+        printFunc("indexOf", money7);
+        int index = singlyLinkedList.indexOf(money7);
         System.out.print(index + "\n\t");
-        list.print();
-        printDemo("indexOf", money4);
-        index = list.indexOf(money4);
+        singlyLinkedList.print();
+        printFunc("indexOf", money4);
+        index = singlyLinkedList.indexOf(money4);
         System.out.print(index + "\n\t");
-        list.print();
-        printDemo("get", index);
-        obj = list.get(index);
+        singlyLinkedList.print();
+        printFunc("get", index);
+        USD obj = singlyLinkedList.get(index);
         System.out.print(obj + "\n\t");
-        list.print();
-        printDemo("remove", 4);
-        list.remove(4);
-        list.print();
+        singlyLinkedList.print();
+        printFunc("remove", 4);
+        singlyLinkedList.remove(4);
+        singlyLinkedList.print();
         System.out.println("clear()");
-        list.clear();
-        list.print();
+        singlyLinkedList.clear();
+        singlyLinkedList.print();
+
+
+        //Stack Demonstration
+        //push(E), pop(), peek()
+        System.out.println("\nStack Demonstration");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("push(E), pop(), peek()");
+        printFunc("push", money1);
+        stack.push(money1);
+        stack.print();
+        printFunc("push", money2);
+        stack.push(money2);
+        stack.print();
+        System.out.print("pop()\n\t");
+        obj = stack.pop();
+        System.out.print(obj + "\n\t");
+        stack.print();
+        printFunc("push", money3);
+        stack.push(money3);
+        stack.print();
+        printFunc("push", money4);
+        stack.push(money4);
+        stack.print();
+        System.out.print("peek()\n\t");
+        obj = stack.peek();
+        System.out.print(obj + "\n\t");
+        stack.print();
+        for (int i = 0; i < 3; i++) {
+            System.out.print("pop()\n\t");
+            obj = stack.pop();
+            System.out.print(obj + "\n\t");
+            stack.print();
+        }
+        System.out.print("peek()\n\t");
+        obj = stack.peek();
+        System.out.print(obj + "\n\t");
+        stack.print();
+
+
+        //Queue Demonstration
 
 
     }
 
 
-    public static void printDemo(String funcName, USD... elements) {
-        printDemo(funcName, -1, elements);
-
+    public static void printFunc(String funcName, USD... elements) {
+        printFunc(funcName, -1, elements);
     }
 
-    public static void printDemo(String funcName, int index, USD... elements) {
+    public static void printFunc(String funcName, int index, USD... elements) {
         String out = funcName + "(";
         if (index != -1) {
             out += index + ", ";
         }
+
 
         for (USD element : elements) {
             out += element + ", ";
